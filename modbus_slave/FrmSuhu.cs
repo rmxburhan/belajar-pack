@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Diagnostics;
 
 namespace modbus_slave
 {
@@ -25,11 +28,7 @@ namespace modbus_slave
             InitializeComponent();
         }
 
-        private void guna2CustomGradientPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+    
         private void FrmSuhu_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -39,11 +38,7 @@ namespace modbus_slave
             }
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
+    
         private void FrmSuhu_Load(object sender, EventArgs e)
         {
             int baud = 1200;
@@ -53,26 +48,41 @@ namespace modbus_slave
                 baud = baud * 2;
             }
             string[] port = SerialPort.GetPortNames();
-            cbxDaftarPort.Items.AddRange(port);
+            if (port.Length > 0)
+            {
+                cbxDaftarPort.Items.Clear();
+                cbxDaftarPort.Items.AddRange(port);
+            }
+            else
+            {
+                cbxDaftarPort.Items.Clear();
+            }
             btnDisconnect.Enabled = false;
             btnConnect.Enabled = true;
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            try
+            if (cbxBaudRate.Text.Trim() != "" && cbxDaftarPort.Text.Trim() != "")
             {
-                cbxDaftarPort.Enabled = false;
-                cbxBaudRate.Enabled = false;
-                btnConnect.Enabled = false;
-                btnDisconnect.Enabled = true;
-                serialPort1.PortName = cbxDaftarPort.SelectedItem.ToString();
-                serialPort1.BaudRate = int.Parse(cbxBaudRate.SelectedItem.ToString());
-                serialPort1.Open();
+                try
+                {
+                    serialPort1.PortName = cbxDaftarPort.SelectedItem.ToString();
+                    serialPort1.BaudRate = int.Parse(cbxBaudRate.SelectedItem.ToString());
+                    serialPort1.Open();
+                    cbxDaftarPort.Enabled = false;
+                    cbxBaudRate.Enabled = false;
+                    btnConnect.Enabled = false;
+                    btnDisconnect.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Silahkan lengkapi semua data", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -86,11 +96,11 @@ namespace modbus_slave
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
+            serialPort1.Close();
             cbxBaudRate.Enabled = true;
             cbxDaftarPort.Enabled = true;
             btnConnect.Enabled = true;
             btnDisconnect.Enabled = false;
-            serialPort1.Close();
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
@@ -101,7 +111,7 @@ namespace modbus_slave
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             dataFromSerialPort = serialPort1.ReadExisting();
-            this.Invoke(new EventHandler(ShowData));
+            this.Invoke(new EventHandler(ShowData)); 
         }
 
         private void ShowData(object sender, EventArgs e)
@@ -109,13 +119,56 @@ namespace modbus_slave
             try
             {
                 string[] result = dataFromSerialPort.Split(',');
-                labelSuhu.Text = result[1] + " °C";
-                labelKelembaban.Text = result[2];
+                labelSuhu.Text = result[0] + " °C";
+                labelKelembaban.Text = result[1];
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+        //protected override void WndProc(ref Message m)
+        //{
+        //    switch (m.Msg)
+        //    {
+        //        case 537: //WM_DEVICECHANGE
+        //            string[] ports = SerialPort.GetPortNames();
+        //            if (ports.Length > 0)
+        //            {
+        //                cbxDaftarPort.Items.Clear();
+        //                cbxDaftarPort.Items.AddRange(ports);
+        //            }
+        //            else
+        //            {
+        //                cbxDaftarPort.Items.Clear();
+        //            }
+
+        //            break;
+        //    }
+        //    base.WndProc(ref m);
+        //}
+
+        protected override void WndProc(ref Message m)
+        {
+            switch (m.Msg)
+            {
+                case 537:
+                    string[] ports = SerialPort.GetPortNames();
+                    if (ports.Length >0)
+                    {
+                        cbxDaftarPort.Items.Clear();
+                        cbxDaftarPort.Items.AddRange(ports);
+                    }
+                    else
+                    {
+                        cbxDaftarPort.Items.Clear();
+                    }
+                    break;
+            }
+            base.WndProc(ref m);
+        }
+
     }
 }
