@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "modbus_slave", "modbus_slave\modbus_slave.csproj", "{50D1FDB5-1FB6-4015-9296-1120E3DB0D2B}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{924B49D5-924A-4AAE-B560-D1FFED07D638}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup2", "Setup2\Setup2.vdproj", "{23E0239C-D861-4C9F-AA5F-0B98EE3F21AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,10 @@ Global
 		{50D1FDB5-1FB6-4015-9296-1120E3DB0D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50D1FDB5-1FB6-4015-9296-1120E3DB0D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50D1FDB5-1FB6-4015-9296-1120E3DB0D2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{924B49D5-924A-4AAE-B560-D1FFED07D638}.Debug|Any CPU.ActiveCfg = Debug
+		{924B49D5-924A-4AAE-B560-D1FFED07D638}.Release|Any CPU.ActiveCfg = Release
+		{23E0239C-D861-4C9F-AA5F-0B98EE3F21AF}.Debug|Any CPU.ActiveCfg = Debug
+		{23E0239C-D861-4C9F-AA5F-0B98EE3F21AF}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

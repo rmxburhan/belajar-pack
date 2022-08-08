@@ -52,6 +52,7 @@ namespace modbus_slave
             {
                 cbxDaftarPort.Items.Clear();
                 cbxDaftarPort.Items.AddRange(port);
+                cbxDaftarPort.SelectedIndex = 0;
             }
             else
             {
@@ -59,6 +60,7 @@ namespace modbus_slave
             }
             btnDisconnect.Enabled = false;
             btnConnect.Enabled = true;
+            cbxBaudRate.SelectedIndex = 0;
         }
 
         private void btnConnect_Click(object sender, EventArgs e)

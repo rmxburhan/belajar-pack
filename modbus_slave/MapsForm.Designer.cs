@@ -34,6 +34,7 @@ namespace modbus_slave
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.panelControl = new Guna.UI2.WinForms.Guna2Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.minimizeBox = new Guna.UI2.WinForms.Guna2ControlBox();
             this.closeBox = new Guna.UI2.WinForms.Guna2ControlBox();
@@ -41,16 +42,19 @@ namespace modbus_slave
             this.mapGoogle = new System.Windows.Forms.TabPage();
             this.googleMapControl1 = new modbus_slave.GoogleMapControl();
             this.mapBing = new System.Windows.Forms.TabPage();
+            this.bingControl1 = new modbus_slave.BingControl();
             this.mapOpenStreetMap = new System.Windows.Forms.TabPage();
             this.openStreetMapControl1 = new modbus_slave.OpenStreetMapControl();
+            this.mapWinGis = new System.Windows.Forms.TabPage();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.bingControl1 = new modbus_slave.BingControl();
+            this.mapWinGis1 = new modbus_slave.MapWinGis();
             this.panelControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2TabControl1.SuspendLayout();
             this.mapGoogle.SuspendLayout();
             this.mapBing.SuspendLayout();
             this.mapOpenStreetMap.SuspendLayout();
+            this.mapWinGis.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +76,7 @@ namespace modbus_slave
             // panelControl
             // 
             this.panelControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(32)))), ((int)(((byte)(41)))));
+            this.panelControl.Controls.Add(this.label1);
             this.panelControl.Controls.Add(this.guna2PictureBox1);
             this.panelControl.Controls.Add(this.minimizeBox);
             this.panelControl.Controls.Add(this.closeBox);
@@ -80,6 +85,17 @@ namespace modbus_slave
             this.panelControl.Name = "panelControl";
             this.panelControl.Size = new System.Drawing.Size(701, 50);
             this.panelControl.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(51, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 21);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Map ";
             // 
             // guna2PictureBox1
             // 
@@ -97,7 +113,8 @@ namespace modbus_slave
             this.minimizeBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.minimizeBox.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
             this.minimizeBox.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
-            this.minimizeBox.HoverState.FillColor = System.Drawing.Color.DimGray;
+            this.minimizeBox.HoverState.FillColor = System.Drawing.Color.Silver;
+            this.minimizeBox.HoverState.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.minimizeBox.IconColor = System.Drawing.Color.White;
             this.minimizeBox.Location = new System.Drawing.Point(593, 12);
             this.minimizeBox.Name = "minimizeBox";
@@ -121,6 +138,7 @@ namespace modbus_slave
             this.guna2TabControl1.Controls.Add(this.mapGoogle);
             this.guna2TabControl1.Controls.Add(this.mapBing);
             this.guna2TabControl1.Controls.Add(this.mapOpenStreetMap);
+            this.guna2TabControl1.Controls.Add(this.mapWinGis);
             this.guna2TabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2TabControl1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2TabControl1.ItemSize = new System.Drawing.Size(180, 40);
@@ -177,6 +195,14 @@ namespace modbus_slave
             this.mapBing.Text = "Bing";
             this.mapBing.UseVisualStyleBackColor = true;
             // 
+            // bingControl1
+            // 
+            this.bingControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bingControl1.Location = new System.Drawing.Point(3, 3);
+            this.bingControl1.Name = "bingControl1";
+            this.bingControl1.Size = new System.Drawing.Size(507, 386);
+            this.bingControl1.TabIndex = 0;
+            // 
             // mapOpenStreetMap
             // 
             this.mapOpenStreetMap.Controls.Add(this.openStreetMapControl1);
@@ -186,7 +212,6 @@ namespace modbus_slave
             this.mapOpenStreetMap.TabIndex = 3;
             this.mapOpenStreetMap.Text = "Open Street Map";
             this.mapOpenStreetMap.UseVisualStyleBackColor = true;
-            this.mapOpenStreetMap.Click += new System.EventHandler(this.mapOpenStreetMap_Click);
             // 
             // openStreetMapControl1
             // 
@@ -195,6 +220,17 @@ namespace modbus_slave
             this.openStreetMapControl1.Name = "openStreetMapControl1";
             this.openStreetMapControl1.Size = new System.Drawing.Size(513, 392);
             this.openStreetMapControl1.TabIndex = 2;
+            // 
+            // mapWinGis
+            // 
+            this.mapWinGis.Controls.Add(this.mapWinGis1);
+            this.mapWinGis.Location = new System.Drawing.Point(184, 4);
+            this.mapWinGis.Name = "mapWinGis";
+            this.mapWinGis.Padding = new System.Windows.Forms.Padding(3);
+            this.mapWinGis.Size = new System.Drawing.Size(513, 392);
+            this.mapWinGis.TabIndex = 4;
+            this.mapWinGis.Text = "Map Win Gis";
+            this.mapWinGis.UseVisualStyleBackColor = true;
             // 
             // guna2Panel2
             // 
@@ -205,13 +241,13 @@ namespace modbus_slave
             this.guna2Panel2.Size = new System.Drawing.Size(701, 400);
             this.guna2Panel2.TabIndex = 2;
             // 
-            // bingControl1
+            // mapWinGis1
             // 
-            this.bingControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bingControl1.Location = new System.Drawing.Point(3, 3);
-            this.bingControl1.Name = "bingControl1";
-            this.bingControl1.Size = new System.Drawing.Size(507, 386);
-            this.bingControl1.TabIndex = 0;
+            this.mapWinGis1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mapWinGis1.Location = new System.Drawing.Point(3, 3);
+            this.mapWinGis1.Name = "mapWinGis1";
+            this.mapWinGis1.Size = new System.Drawing.Size(507, 386);
+            this.mapWinGis1.TabIndex = 0;
             // 
             // MapsForm
             // 
@@ -225,11 +261,13 @@ namespace modbus_slave
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MapsForm";
             this.panelControl.ResumeLayout(false);
+            this.panelControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.guna2TabControl1.ResumeLayout(false);
             this.mapGoogle.ResumeLayout(false);
             this.mapBing.ResumeLayout(false);
             this.mapOpenStreetMap.ResumeLayout(false);
+            this.mapWinGis.ResumeLayout(false);
             this.guna2Panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -251,5 +289,8 @@ namespace modbus_slave
         private GoogleMapControl googleMapControl1;
         private OpenStreetMapControl openStreetMapControl1;
         private BingControl bingControl1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage mapWinGis;
+        private MapWinGis mapWinGis1;
     }
 }

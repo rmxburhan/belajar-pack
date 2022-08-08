@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace modbus_slave
+namespace WindowsFormsApp1
 {
-    public partial class MapsForm : Form
+    public partial class Form1 : Form
     {
-        public MapsForm()
+        public Form1()
         {
             InitializeComponent();
         }
