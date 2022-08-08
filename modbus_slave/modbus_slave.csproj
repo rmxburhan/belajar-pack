@@ -101,8 +101,8 @@
     <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="MQTTnet, Version=4.0.2.221, Culture=neutral, PublicKeyToken=fdb7629f2e364a63, processorArchitecture=MSIL">
-      <HintPath>..\packages\MQTTnet.4.0.2.221\lib\net461\MQTTnet.dll</HintPath>
+    <Reference Include="M2Mqtt.Net, Version=4.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\M2Mqtt.4.3.0.0\lib\net45\M2Mqtt.Net.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -195,6 +195,12 @@
     <Compile Include="MapWinGis.Designer.cs">
       <DependentUpon>MapWinGis.cs</DependentUpon>
     </Compile>
+    <Compile Include="MQTTClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MQTTClient.Designer.cs">
+      <DependentUpon>MQTTClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="OpenStreetMapControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -226,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MapWinGis.resx">
       <DependentUpon>MapWinGis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MQTTClient.resx">
+      <DependentUpon>MQTTClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OpenStreetMapControl.resx">
       <DependentUpon>OpenStreetMapControl.cs</DependentUpon>
