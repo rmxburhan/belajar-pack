@@ -4,3 +4,4 @@
 ##### - Aplikasi suhu
 ##### - Aplikasi map
 ##### - Aplikasi MQTT Client
+##### - Latihan modbus slave 
