@@ -113,7 +113,6 @@ namespace modbus_slave
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             dataFromSerialPort = serialPort1.ReadExisting();
-            this.Invoke(new EventHandler(ShowData)); 
         }
 
         private void ShowData(object sender, EventArgs e)

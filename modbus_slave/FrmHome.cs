@@ -17,6 +17,7 @@ namespace modbus_slave
 {
     public partial class FrmHome : Form
     {
+        public static serial serial = new serial();
         public FrmHome()
         {
             InitializeComponent();
@@ -90,7 +91,7 @@ namespace modbus_slave
             {
                 try
                 {
-                    byte slaveAddress = Convert.ToByte(1);
+                    byte slaveAddress = Convert.ToByte(txtSleveId.Text);
                     ushort startAddress = Convert.ToUInt16(txtStartAddress.Text);
                     ushort numberOfPoints = Convert.ToUInt16(txtQuantity.Text);
 
@@ -152,7 +153,7 @@ namespace modbus_slave
             {
                 try
                 {
-                    byte slaveAddress = Convert.ToByte(1);
+                    byte slaveAddress = Convert.ToByte(textBox2.Text);
                     ushort startAddress = Convert.ToUInt16(textBox3.Text);
                     ushort data = Convert.ToUInt16(textBox4.Text);
                     IModbusMaster masterRTU = ModbusSerialMaster.CreateRtu(serialPort1);
@@ -209,6 +210,10 @@ namespace modbus_slave
             {
                 MessageBox.Show("Port belum tekoneksi", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
         }
     }
 }
