@@ -25,19 +25,19 @@ namespace modbus_slave
             }
         }
 
-        private async Task<double[]> kalkulasiGPS(string rawLat, string rawLng, string rawAlt)
-        {
-            double[] result = new double[3] { 0,0,0};
-            try
-            {
+        //private async Task<double[]> kalkulasiGPS(string rawLat, string rawLng, string rawAlt)
+        //{
+        //    double[] result = new double[3] { 0,0,0};
+        //    try
+        //    {
                 
-            }
-            catch (Exception ex)
-            {
-                message = ex.Message;
-                return result;
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        message = ex.Message;
+        //        return result;
+        //    }
+        //}
 
         public bool openPort(string portName)
         {

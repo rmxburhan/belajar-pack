@@ -128,6 +128,7 @@
     <Reference Include="System.Data.SQLite.Linq, Version=1.0.115.5, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.115.5\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.Management" />
     <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
     </Reference>
@@ -146,6 +147,18 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algoritma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Algoritma.Designer.cs">
+      <DependentUpon>Algoritma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="asd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="asd.Designer.cs">
+      <DependentUpon>asd.cs</DependentUpon>
+    </Compile>
     <Compile Include="BingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -228,8 +241,17 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="serial.cs" />
+    <EmbeddedResource Include="Algoritma.resx">
+      <DependentUpon>Algoritma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="asd.resx">
+      <DependentUpon>asd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BingControl.resx">
       <DependentUpon>BingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChartLevelingUsingSpline.resx">
+      <DependentUpon>ChartLevelingUsingSpline.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

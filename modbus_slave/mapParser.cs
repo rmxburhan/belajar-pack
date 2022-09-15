@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Management;
 namespace modbus_slave
 {
     public partial class mapParser : Form
@@ -199,6 +199,28 @@ namespace modbus_slave
         }
 
         string lat,lng;
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+                ManagementBaseObject mboShutdown = null;
+                ManagementClass mcWin32 = new ManagementClass("Win32_OperatingSystem");
+                mcWin32.Get();
+
+                // You can't shutdown without security privileges
+                mcWin32.Scope.Options.EnablePrivileges = true;
+                ManagementBaseObject mboShutdownParams =
+                         mcWin32.GetMethodParameters("Win32Shutdown");
+
+                // Flag 1 means we want to shut down the system. Use "2" to reboot.
+                mboShutdownParams["Flags"] = "1";
+                mboShutdownParams["Reserved"] = "0";
+                foreach (ManagementObject manObj in mcWin32.GetInstances())
+                {
+                    mboShutdown = manObj.InvokeMethod("Win32Shutdown",
+                                                   mboShutdownParams, null);
+                }
+        }
+
         private void si_DataReceived(string data)
         {
             string[] strArr = data.Split('$');
@@ -261,7 +283,6 @@ namespace modbus_slave
                 }
             }
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Interval = 1000;
